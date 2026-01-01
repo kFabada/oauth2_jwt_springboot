@@ -1,4 +1,4 @@
-package exception;
+package com.oauthjwt.fabada.exception;
 
 public class UserRegisterException extends RuntimeException {
     private final int code;

@@ -1,25 +1,26 @@
-package controller;
+package com.oauthjwt.fabada.controller;
 
-import dto.UserRegisterDTO;
-import dto.UserResponseDTO;
-import exception.UserRegisterException;
-import model.User;
+import com.oauthjwt.fabada.dto.UserRegisterDTO;
+import com.oauthjwt.fabada.dto.UserResponseDTO;
+import com.oauthjwt.fabada.exception.UserRegisterException;
+import com.oauthjwt.fabada.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.UserService;
+import com.oauthjwt.fabada.service.UserService;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/auth")
 public class UserController {
     @Autowired
     private UserService userService;
 
-
    @PostMapping("/register")
-    public ResponseEntity<?> userRegister(UserRegisterDTO userDTO){
+    public ResponseEntity<?> userRegister(@RequestBody UserRegisterDTO userDTO){
        try{
            User user = userDTO.UserMap();
            User userRegister = userService.registerUser(user);
@@ -36,4 +37,8 @@ public class UserController {
        }
    }
 
+   @PostMapping("/teste")
+   public ResponseEntity<?> teste(){
+       return ResponseEntity.ok("teste");
+   }
 }

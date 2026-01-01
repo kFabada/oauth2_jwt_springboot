@@ -1,14 +1,16 @@
-package service;
+package com.oauthjwt.fabada.service;
 
-import model.User;
+import com.oauthjwt.fabada.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import repository.UserRepository;
+import com.oauthjwt.fabada.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
 
     public User registerUser(User user){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
