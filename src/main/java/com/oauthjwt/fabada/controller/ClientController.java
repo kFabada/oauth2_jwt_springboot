@@ -25,7 +25,7 @@ public class ClientController {
     }
 
     @PostMapping("/teste")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('profile')")
     public ResponseEntity<?> teste(){
 
         return ResponseEntity.ok("teste");
