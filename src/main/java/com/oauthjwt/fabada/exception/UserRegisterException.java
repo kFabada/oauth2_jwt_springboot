@@ -1,6 +1,6 @@
 package com.oauthjwt.fabada.exception;
 
-public class UserRegisterException extends RuntimeException {
+public class UserRegisterException extends Exception {
     private final int code;
 
     public UserRegisterException(String message, int code) {

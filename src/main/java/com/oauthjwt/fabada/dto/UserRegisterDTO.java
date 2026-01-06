@@ -5,8 +5,8 @@ import com.oauthjwt.fabada.model.User;
 
 public record UserRegisterDTO(String username, String password, String role) {
 
-    public User UserMap(){
-        if(username.isEmpty() || password.isEmpty() || role.isEmpty()){
+    public User UserMap() throws UserRegisterException{
+        if(username.isEmpty() || password.isEmpty() || role.isEmpty()) {
             throw new UserRegisterException("payload incomplete", 400);
         }
 

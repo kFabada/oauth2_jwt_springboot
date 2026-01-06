@@ -60,6 +60,7 @@ public class Cors {
     public SecurityFilterChain securityFilterChain(HttpSecurity http){
        return http
                .csrf(AbstractHttpConfigurer::disable)
+               .httpBasic(Customizer.withDefaults())
                .oauth2ResourceServer(
                        resource -> resource.jwt(Customizer.withDefaults()
                        ))
@@ -80,12 +81,10 @@ public class Cors {
 //               )
                .authorizeHttpRequests(httpRequest -> httpRequest
                        .requestMatchers(
-//                               "/realms/oauth2_resource_server/protocol/openid-connect/token",
-//                               "/oauth2/token",
-//                                "/authentication/token",
-                               "/cliente/get-key"
-                       )
-                       .permitAll()
+//                          "/realms/oauth2_resource_server/protocol/openid-connect/token",
+//                          "/oauth2/token",
+                            "/auth/register"
+                       ).permitAll()
                                .anyRequest()
                                .authenticated()
                )

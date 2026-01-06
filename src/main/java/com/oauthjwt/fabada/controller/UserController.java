@@ -4,6 +4,7 @@ import com.oauthjwt.fabada.dto.UserRegisterDTO;
 import com.oauthjwt.fabada.dto.UserResponseDTO;
 import com.oauthjwt.fabada.exception.UserRegisterException;
 import com.oauthjwt.fabada.model.User;
+import com.oauthjwt.fabada.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
    @PostMapping("/register")
     public ResponseEntity<?> userRegister(@RequestBody UserRegisterDTO userDTO){
@@ -35,10 +36,5 @@ public class UserController {
        } catch (Exception e) {
            return ResponseEntity.internalServerError().build();
        }
-   }
-
-   @PostMapping("/teste")
-   public ResponseEntity<?> teste(){
-       return ResponseEntity.ok("teste");
    }
 }
